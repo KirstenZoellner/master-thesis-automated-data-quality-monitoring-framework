@@ -52,7 +52,7 @@ The framework validates data quality at multiple stages of the pipeline using de
 
 Validation of incoming weather data before further processing.
 
-Implemented with Great Expectations.
+Implemented as the first validation layer using Great Expectations.
 
 Checks include:
 
@@ -184,7 +184,8 @@ The monitoring dashboard is implemented in Looker Studio and provides:
 ```text
 weather_pipeline/
 ├── models/
-├── schema.yml
+│   ├── schema.yml
+│   └── stg_daily_weather.sql
 ├── dbt_project.yml
 
 gx/
