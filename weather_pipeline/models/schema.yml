@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_daily_weather
+    description: "Staging-Modell für fehlerinjizierte Wetterdaten"
+  
+    tests:
+      - unique:
+          column_name: "concat(cast(station_id as string), '-', cast(date as string))"
+
+    columns:
+      - name: station_id
+        tests:
+          - not_null
+
+      - name: date
+        tests:
+          - not_null
+
+      - name: city_name
+        tests:
+          - not_null
+
+      - name: season
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Winter', 'Spring', 'Summer', 'Autumn']

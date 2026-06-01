@@ -1,0 +1,40 @@
+# Python
+
+**pycache**/
+*.pyc
+
+# Virtual Environments
+
+.venv/
+venv/
+env/
+
+# Logs
+
+logs/
+*.log
+
+# dbt
+
+weather_pipeline/target/
+weather_pipeline/dbt_packages/
+weather_pipeline/logs/
+
+# GX
+
+gx/uncommitted/
+
+# OS
+
+.DS_Store
+Thumbs.db
+
+# IDE
+
+.vscode/
+.idea/
+
+# Large local data
+
+*.parquet
+*.csv
