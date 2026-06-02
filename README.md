@@ -4,7 +4,11 @@
 
 This repository contains the prototype and artifact developed as part of a Master's Thesis focusing on automated data quality monitoring in modern Data Engineering pipelines.
 
-The artifact was developed following the **Design Science Research (DSR)** methodology and implements a **Quality-as-Code** approach for the automated detection, validation, monitoring, and reporting of data quality issues throughout an ELT pipeline.
+## Methodological Foundation
+
+The artifact was developed according to the Design Science Research process model by Peffers et al. (2007). Within this process, the repository represents the designed and implemented artifact for automated data quality monitoring in an ELT pipeline.
+
+The implementation follows the design principle of Quality-as-Code, meaning that data quality requirements are formalized as executable validation rules using dbt and Great Expectations.
 
 The solution combines the following technologies:
 
@@ -102,6 +106,27 @@ Implemented tests include:
 * `accepted_values`
 
 These tests provide an additional technical validation layer for structural data quality issues.
+
+---
+
+### Quality Gate Dimensions
+
+| Quality Gate | Check | Data Quality Dimension |
+|-------------|-------|-------------------------|
+| QG1 | station_id not null | Completeness |
+| QG1 | date not null | Completeness |
+| QG1 | max_temp_c between -90 and 60 | Accuracy |
+| QG1 | max_temp_c >= min_temp_c | Consistency |
+| QG2 | ISO-2 format validation | Validity |
+| QG2 | ISO-2 accepted values | Accuracy / Validity |
+| QG2 | country_code accepted values | Accuracy / Validity |
+| QG3 | date not null | Completeness |
+| QG3 | freshness / timeliness check | Timeliness |
+| QG3 | avg_temp_c range | Accuracy |
+| QG3 | precipitation_mm range | Accuracy |
+| dbt | unique station_id + date | Uniqueness |
+| dbt | not_null city_name | Completeness |
+| dbt | accepted_values season | Validity |
 
 ---
 
