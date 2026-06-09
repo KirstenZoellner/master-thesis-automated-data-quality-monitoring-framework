@@ -54,6 +54,7 @@ validator = context.get_validator(
 # QG1 Checks
 validator.expect_column_values_to_not_be_null("station_id")
 validator.expect_column_values_to_not_be_null("date")
+validator.expect_column_values_to_not_be_null("avg_temp_c")
 
 validator.expect_column_values_to_be_between(
     "max_temp_c",

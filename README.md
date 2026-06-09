@@ -60,7 +60,7 @@ Implemented as the first validation layer using Great Expectations.
 
 Checks include:
 
-* Mandatory field validation (`station_id`, `date`)
+* Mandatory field validation (`station_id`, `date`, `avg_temp_c`)
 * Temperature range validation
 * Consistency validation (`max_temp_c >= min_temp_c`)
 
@@ -74,9 +74,9 @@ Implemented with Great Expectations.
 
 Checks include:
 
-* ISO country code validation
-* Country code validation
-* Pattern and format validation
+* Date completeness validation
+* Timeliness validation based on the maximum available observation date
+* Plausibility checks for temperature and precipitation values
 
 ---
 
@@ -144,9 +144,9 @@ To evaluate the effectiveness of the framework, three different datasets are pro
 
 #### clean
 
-* All Quality Gates pass successfully
-* dbt tests pass successfully
-* Dashboard shows no relevant quality issues
+* No intentionally injected quality issues are expected
+* dbt tests and Quality Gates are used as baseline validation
+* Dashboard provides a reference view for comparison with faulty scenarios
 
 #### technical
 
@@ -223,7 +223,11 @@ docs/
 ├── architecture.png
 
 looker/
-├── dashboard_exports
+├── README.md
+├── dashboard_anzahl_datenqualitaetspruefungen_je_werkzeug_und_szenario.png
+├── dashboard_anzahl_erkannter_fehler_pro_szenario.png
+├── dashboard_anzahl_fehlgeschlagener_pruefungen_pro_quality_gate.png
+└── dashboard_ergebnis_datenqualitaetspruefungen_je_szenario.png
 ```
 
 ---
